@@ -1,0 +1,81 @@
+class node:
+    def __init__(self,data):
+        sel.data = data
+        self.next = None
+
+class linklist:
+    def __init__(self):
+        self.head = None
+
+    def add(self,data):
+        new_node = node(data)
+        if self.head == None:
+            self.head = new_node
+            return
+
+        current_node = self.head
+        while current_node != None:
+            current_node = current_node.next
+
+        current_node.next = new_node
+
+    def delete(self,data):
+        if self.head == None:
+            return
+
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+
+        current_node = self.head
+        while current_node.next != None:
+            if current_node.next.data == data:
+                current_node.next = current_node.next.next
+                return
+
+            current_node = current_node.next
+
+    def print(self):
+        current_node = self.head
+        while current_node != None:
+            print(current_node.data)
+            current_node = current_node.next
+
+    def exit(self):
+        return
+
+    def sum(self,a,b):
+        return a + b 
+
+    def mul(self,a,b):
+        return a * b 
+
+
+
+linkList = LinkList()
+
+while True:
+    myInput = input(
+        "insert the action you want : add , sum ,  multiply, delete , print: ")
+
+    match myInput:
+        case  "add":
+            insert_polynomial = input("insert the polynomial : ")
+            linkList.add(insert_polynomial)
+
+        case "sum":
+            linkList.sum(insert_polynomial)
+
+        case "multiply":
+            linkList.multiply(insert_polynomial)
+
+        case "delete":
+            delete_polynomial = input("delete the polynomial you want : ")
+            linkList.delete(delete_polynomial)
+
+        case "print":
+            print(linkList())
+            
+        case _:
+            print("you exited the program")
+            break
